@@ -66,3 +66,24 @@ async def update_blog(pk: str, body: dict):
 async def delete_blog(pk: str):
     Blog.delete(pk)
     return {"success": "blog deleted successfully"}
+
+def format_results(data):
+    response = []
+    for dat in data:
+        response.append(dat.dict())
+
+    return {"results": response}
+
+
+@app.post("/blogs/find")
+async def blog_by_name(title: str):
+    blogs = Blog.find(Blog.title % title).all()
+
+    return format_results(blogs)
+
+
+@app.post("/blogs/find/author")
+async def blog_by_author(first_name: str):
+    blogs = Blog.find(Blog.author.first_name == first_name).all()
+
+    return format_results(blogs)
