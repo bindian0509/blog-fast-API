@@ -11,3 +11,6 @@ uvicorn main:app --reload
 
 #### Server http://127.0.0.1:8000/
 #### API Docs http://127.0.0.1:8000/docs
+
+
+Source : https://ubaydah.hashnode.dev/building-a-blog-service-with-fastapi-and-redis-om
